@@ -6,7 +6,7 @@ module API
         named: 'ping',
         success: { code: 200, message: 'Health check' }
       get :ping do
-        { ping: 'pong' }
+        'pong'
       end
     end
   end

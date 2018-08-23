@@ -1,7 +1,8 @@
 module API
   module V1
     class Root < Grape::API
-      version 'v1'
+      prefix :api
+      version 'v1', using: :path
 
       include API::V1::Helpers::ErrorHandler
 
@@ -11,8 +12,6 @@ module API
       #mount API::V1::Swagger
 
       add_swagger_documentation(
-        mount_path: '/swagger.json',
-        add_base_path: false,
         add_version: true,
         doc_version: '0.0.1',
         hide_documentation_path: true,

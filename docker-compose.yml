@@ -1,5 +1,13 @@
 version: '3'
 services:
+  swagger:
+    image: swaggerapi/swagger-ui
+    env_file:
+      - .env
+    depends_on:
+      - api
+    ports:
+      - '8080:8080'
   postgresql:
     image: postgres
     env_file:

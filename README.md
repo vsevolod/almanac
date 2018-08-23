@@ -6,7 +6,8 @@
  - Copy and modify .env file `cp .env.example .env`
  - Start cointainers: `docker-compose up -d`
   -- `postgresql` Postgresql database
+  -- `swagger` Swagger web server for documentation
   -- `api` Thin web server for api requests
 
-## API
-path to swagger
+## Documentations
+[Swagger docs](http://localhost:8080)

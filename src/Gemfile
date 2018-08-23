@@ -28,6 +28,8 @@ gem 'oj'
 group :development, :test do
   gem 'pry-byebug'
   gem 'grape_on_rails_routes'
+
+  gem 'rspec-rails'
 end
 
 group :development do
