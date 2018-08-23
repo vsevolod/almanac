@@ -1,0 +1,21 @@
+version: '3'
+services:
+  postgresql:
+    image: postgres
+    env_file:
+      - .env
+  api:
+    build: ./src
+    environment:
+      - 'RAILS_ENV=production'
+    env_file:
+      - .env
+    command: tail -f /dev/null
+    volumes:
+      - ./src:/app
+    links:
+      - 'postgresql:postgresql'
+    depends_on:
+      - postgresql
+    ports:
+      - '3000:3000'

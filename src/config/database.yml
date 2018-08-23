@@ -1,0 +1,18 @@
+default: &default
+  host: 'postgresql'
+  adapter: 'postgresql'
+  encoding: utf-8
+  username: <%= ENV.fetch('POSTGRES_USER') %>
+  password: <%= ENV.fetch('POSTGRES_PASSWORD') %>
+
+development:
+  <<: *default
+  database: almanac_dev
+
+test:
+  <<: *default
+  database: almanac_test
+
+production:
+  <<: *default
+  database: <%= ENV.fetch('POSTGRES_DB') %>
