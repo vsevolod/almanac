@@ -34,9 +34,10 @@ ActiveRecord::Schema.define(version: 2018_08_23_194922) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "login"
+    t.string "login", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["login"], name: "index_users_on_login", unique: true
   end
 
   add_foreign_key "marks", "posts"

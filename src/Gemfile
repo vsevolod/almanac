@@ -30,8 +30,13 @@ group :development, :test do
   gem 'grape_on_rails_routes'
 
   gem 'rspec-rails'
+  gem 'faker'
 end
 
 group :development do
   gem 'listen'
+end
+
+group :test do
+  gem 'json_matchers'
 end

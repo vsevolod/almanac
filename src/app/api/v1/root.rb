@@ -9,7 +9,7 @@ module API
       format :json
 
       mount API::V1::Ping
-      #mount API::V1::Swagger
+      mount API::V1::Posts::Create
 
       add_swagger_documentation(
         add_version: true,

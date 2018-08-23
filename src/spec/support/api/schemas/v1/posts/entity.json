@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "content"
+  ],
+  "properties": {
+    "id": {
+      "type": "number"
+    },
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string"
+    },
+    "user_ip": {
+      "type": "string"
+    },
+    "user": {
+      "type": "object"
+    }
+  }
+}
