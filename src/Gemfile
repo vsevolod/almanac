@@ -27,4 +27,9 @@ gem 'oj'
 
 group :development, :test do
   gem 'pry-byebug'
+  gem 'grape_on_rails_routes'
+end
+
+group :development do
+  gem 'listen'
 end

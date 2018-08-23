@@ -6,8 +6,6 @@ services:
       - .env
   api:
     build: ./src
-    environment:
-      - 'RAILS_ENV=production'
     env_file:
       - .env
     command: tail -f /dev/null
