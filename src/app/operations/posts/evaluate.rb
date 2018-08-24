@@ -18,20 +18,18 @@ module Operations
         if mark.save
           Success(input)
         else
-          Failure(mark.errors.messages)
+          Failure(active_record_fail(mark))
         end
       end
 
       def update_average_mark(input)
         post = input[:post]
-
-        post.marks_count += 1
-        post.average_mark += (input[:value] - post.average_mark) / post.marks_count
+        post.apply_mark(input[:value])
 
         if post.save
           Success(post)
         else
-          Failure(post.errors.messages)
+          Failure(active_record_fail(post))
         end
       end
 
@@ -39,6 +37,10 @@ module Operations
         input[:post].with_lock do
           yield(Success(input))
         end
+      end
+
+      def active_record_fail(record)
+        record.errors.messages
       end
     end
   end

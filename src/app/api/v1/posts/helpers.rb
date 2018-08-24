@@ -26,7 +26,7 @@ module API
           @post = Post.find(params[:post_id])
         end
 
-        def new_post(params)
+        def new_post
           user = User.find_or_initialize_by(login: params.dig(:user, :login))
 
           Post.new(

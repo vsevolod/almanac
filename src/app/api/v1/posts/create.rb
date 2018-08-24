@@ -14,8 +14,7 @@ module API
                failure: [{ code: 422, message: 'Unprocessable entity' }]
           params { use :create_post }
           put do
-            post_params = declared(params)
-            post = new_post(post_params)
+            post = new_post
             post.save!
 
             present post, with: Entity
