@@ -8,11 +8,8 @@ module API
           # PUT /api/v1/posts
           desc 'Create post',
             named: 'create',
-            success: {
-              code: 200,
-              model: Entity,
-              message: 'Post successfully creates'
-            }
+            success: { code: 200, model: Entity, message: 'Post successfully creates' },
+            failure: [{ code: 422, message: 'Unprocessable entity' }]
           params { use :create_post }
           put do
             post_params = declared(params)

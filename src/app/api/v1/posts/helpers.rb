@@ -13,6 +13,14 @@ module API
           end
         end
 
+        params :evaluate_post do
+          requires :value, type: Integer, values: Mark::E..Mark::A
+        end
+
+        def find_post!
+          @post = Post.find(params[:post_id])
+        end
+
         def new_post(params)
           user = User.find_or_initialize_by(login: params.dig(:user, :login))
 
@@ -21,6 +29,13 @@ module API
             title: params[:title],
             content: params[:content],
             user_ip: params.dig(:user, :ip)
+          )
+        end
+
+        def post_evaluate
+          Operations::Posts::Evaluate.new.call(
+            post: @post,
+            value: params[:value]
           )
         end
       end

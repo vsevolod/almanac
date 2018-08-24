@@ -7,6 +7,7 @@ module API
         expose :content
         expose :user_ip, as: :ip
         expose :user, using: Users::Entity
+        expose :average_mark
       end
     end
   end

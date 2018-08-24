@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Posts request' do
+RSpec.describe 'Create post request' do
   context 'PUT /api/v1/posts' do
     let(:params) do
       {
