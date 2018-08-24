@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module API
   module V1
     module Posts
@@ -7,9 +9,9 @@ module API
         namespace :posts do
           # PUT /api/v1/posts
           desc 'Create post',
-            named: 'create',
-            success: { code: 200, model: Entity, message: 'Post successfully creates' },
-            failure: [{ code: 422, message: 'Unprocessable entity' }]
+               named: 'create',
+               success: { code: 200, model: Entity, message: 'Post successfully creates' },
+               failure: [{ code: 422, message: 'Unprocessable entity' }]
           params { use :create_post }
           put do
             post_params = declared(params)

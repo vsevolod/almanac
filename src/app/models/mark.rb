@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Mark < ApplicationRecord
   A = 5
   B = 4

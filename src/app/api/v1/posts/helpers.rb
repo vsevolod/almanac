@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module API
   module V1
     module Posts
@@ -9,7 +11,10 @@ module API
           requires :content, type: String
           optional :user, type: Hash do
             optional :login, type: String
-            optional :ip, type: IPAddr
+            optional :ip, type: IPAddr, documentation: {
+              type: 'string',
+              format: 'IPv4, IPv6 address format'
+            }
           end
         end
 

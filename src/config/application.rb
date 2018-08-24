@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 require_relative 'boot'
 
-require "rails"
+require 'rails'
 # Pick the frameworks you want:
-require "active_model/railtie"
-require "active_job/railtie"
-require "active_record/railtie"
-require "action_controller/railtie"
+require 'active_model/railtie'
+require 'active_job/railtie'
+require 'active_record/railtie'
+require 'action_controller/railtie'
 # require "action_view/railtie"
 
 Bundler.require(*Rails.groups)
@@ -26,14 +28,14 @@ module Almanac
     config.api_only = true
 
     # Add Grape api folders
-    #config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
+    # config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
     config.autoload_paths << Rails.root.join('app')
 
     # Rack Cors
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
-        resource '*', headers: :any, methods: [:get, :post, :options]
+        resource '*', headers: :any, methods: %i[get post options]
       end
     end
   end

@@ -1,18 +1,21 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Operations::Posts::Evaluate do
   subject(:result) { described_class.new.call(attributes) }
+
   let(:post) { create_post }
   let(:attributes) { { post: post, value: Mark::C } }
   let(:value) { result.value! }
 
-  context 'unexpected mark' do
+  context 'when mark is unexpected' do
     let(:attributes) { super().merge(value: 10) }
 
     it { is_expected.to be_failure }
   end
 
-  context 'failure average' do
+  context 'when post is not save' do
     before do
       allow(post).to receive(:save).and_return(false)
       allow(Post).to receive(:find_by).and_return(post)
@@ -21,7 +24,7 @@ RSpec.describe Operations::Posts::Evaluate do
     it { is_expected.to be_failure }
   end
 
-  context 'valid attributes' do
+  context 'with valid attributes' do
     let(:mark) { Mark::D }
     let(:attributes) { super().merge(value: mark) }
 
@@ -45,16 +48,17 @@ RSpec.describe Operations::Posts::Evaluate do
       end
     end
 
-    context 'multithreads' do
-      let(:marks) { [1, 1, 2, 2, 3, 3, 4, 5, 5, 5] }
+    context 'with multithreads requests' do
       subject(:operation) do
-        -> (value) do
+        lambda do |value|
           described_class.new.call(
             post: Post.find(post.id),
             value: value
           )
         end
       end
+
+      let(:marks) { [1, 1, 2, 2, 3, 3, 4, 5, 5, 5] }
 
       it 'writes and counts all marks' do
         marks.map do |value|

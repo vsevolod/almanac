@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
@@ -9,18 +11,21 @@ RSpec.describe Post, type: :model do
         content: content
       )
     end
+
     let(:title) { Faker::Lorem.sentence }
     let(:content) { Faker::Lorem.paragraph }
 
     it { is_expected.to be_valid }
 
-    context 'blank title' do
+    context 'when title blank' do
       let(:title) { '' }
+
       it { is_expected.not_to be_valid }
     end
 
-    context 'blank content' do
+    context 'when content blank' do
       let(:content) { '' }
+
       it { is_expected.not_to be_valid }
     end
   end

@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe 'Evaluate post request' do
+RSpec.describe API::V1::Posts::Evaluate do
   include Dry::Monads::Result::Mixin
 
-  context 'POST /api/v1/posts/:post_id/evaluate' do
+  describe 'POST /api/v1/posts/:post_id/evaluate' do
     let(:exists_post) { create_post }
     let(:params) { { value: Mark::A } }
     let(:request) { post "/api/v1/posts/#{exists_post.id}/evaluate", params: params }
@@ -16,7 +18,7 @@ RSpec.describe 'Evaluate post request' do
       expect(json_response['average_mark']).to eq(params[:value])
     end
 
-    context 'operation failure' do
+    context 'when operation returns failure' do
       let(:failure_result) { Failure('error message') }
 
       before do

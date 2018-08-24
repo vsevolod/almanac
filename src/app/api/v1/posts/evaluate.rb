@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module API
   module V1
     module Posts
@@ -10,12 +12,12 @@ module API
 
             # POST /api/v1/posts/:id/evaluate
             desc 'Evaluates the post',
-              named: 'evaluate_post',
-              success: { code: 200, model: Entity, message: 'Successfully evaluates the post' },
-              failure: [
-                { code: 422, message: 'Unprocessable entity' },
-                { code: 404, message: 'Post not found' }
-              ]
+                 named: 'evaluate_post',
+                 success: { code: 200, model: Entity, message: 'Successfully evaluates the post' },
+                 failure: [
+                   { code: 422, message: 'Unprocessable entity' },
+                   { code: 404, message: 'Post not found' }
+                 ]
             params { use :evaluate_post }
             post '/evaluate' do
               result = post_evaluate

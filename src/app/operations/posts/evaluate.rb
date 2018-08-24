@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Operations
   module Posts
     class Evaluate
@@ -33,9 +35,9 @@ module Operations
         end
       end
 
-      def lock_post(input, &block)
+      def lock_post(input)
         input[:post].with_lock do
-          block.call(Success(input))
+          yield(Success(input))
         end
       end
     end

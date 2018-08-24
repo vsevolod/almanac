@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe 'Test ping/pong request' do
-  context 'GET /api/v1/ping' do
+RSpec.describe API::V1::Ping do
+  describe 'GET /api/v1/ping' do
     it 'answers with pong' do
       get '/api/v1/ping'
 

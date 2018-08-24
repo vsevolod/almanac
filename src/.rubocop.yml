@@ -1,0 +1,29 @@
+require: rubocop-rspec
+
+AllCops:
+  Exclude:
+    - 'db/schema.rb'
+    - 'tmp/**/*'
+    - 'bin/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*.rb'
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 99
+
+RSpec/NestedGroups:
+  Max: 4
+
+RSpec/MultipleExpectations:
+  Max: 3
+
+RSpec/ExampleLength:
+  Max: 10
+
+RSpec/AnyInstance:
+  Enabled: false

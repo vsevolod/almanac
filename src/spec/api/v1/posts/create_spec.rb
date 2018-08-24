@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe 'Create post request' do
-  context 'PUT /api/v1/posts' do
+RSpec.describe API::V1::Posts::Create do
+  describe 'PUT /api/v1/posts' do
     let(:params) do
       {
         title: Faker::Lorem.sentence,
@@ -17,7 +19,7 @@ RSpec.describe 'Create post request' do
     it 'creates new post with author' do
       expect { request.call }
         .to change(Post, :count).by(1)
-        .and change(User, :count).by(1)
+                                .and change(User, :count).by(1)
 
       json_response = JSON.parse(response.body)
 
