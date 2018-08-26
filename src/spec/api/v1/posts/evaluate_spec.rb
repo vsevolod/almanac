@@ -14,7 +14,7 @@ RSpec.describe API::V1::Posts::Evaluate do
       request
 
       json_response = JSON.parse(response.body)
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(json_response['average_mark']).to eq(params[:value])
     end
 

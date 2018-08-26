@@ -23,7 +23,7 @@ RSpec.describe API::V1::Posts::Create do
 
       json_response = JSON.parse(response.body)
 
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(json_response['id']).to be_present
     end
 
@@ -49,7 +49,7 @@ RSpec.describe API::V1::Posts::Create do
       it 'creates post anyway' do
         request.call
 
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
 

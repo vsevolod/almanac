@@ -4,6 +4,7 @@ module API
   module V1
     class Root < Grape::API
       include API::V1::Helpers::ErrorHandler
+      include API::V1::Errors
 
       prefix :api
       version 'v1', using: :path
@@ -13,6 +14,7 @@ module API
       mount Ping
       mount Posts::Create
       mount Posts::Evaluate
+      mount Posts::Index
 
       add_swagger_documentation(
         add_version: true,
