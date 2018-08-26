@@ -16,7 +16,7 @@ RSpec.describe API::V1::Posts::Create do
     end
     let(:request) { -> { put '/api/v1/posts', params: params } }
 
-    it 'creates new post with author' do
+    it 'creates new post with user' do
       expect { request.call }
         .to change(Post, :count).by(1)
                                 .and change(User, :count).by(1)

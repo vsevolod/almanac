@@ -73,6 +73,7 @@ GEM
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.4)
       dry-equalizer (~> 0.2)
+    dry-initializer (2.5.0)
     dry-matcher (0.7.0)
     dry-monads (1.0.1)
       concurrent-ruby (~> 1.0)
@@ -248,6 +249,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.1.0)
+  dry-initializer
   dry-transaction
   faker
   grape

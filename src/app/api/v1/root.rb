@@ -15,6 +15,7 @@ module API
       mount Posts::Create
       mount Posts::Evaluate
       mount Posts::Index
+      mount Users::ByIP
 
       add_swagger_documentation(
         add_version: true,

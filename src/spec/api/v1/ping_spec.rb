@@ -7,7 +7,7 @@ RSpec.describe API::V1::Ping do
     it 'answers with pong' do
       get '/api/v1/ping'
 
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(response.body).to eq('"pong"')
     end
   end

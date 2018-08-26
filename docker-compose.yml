@@ -12,6 +12,14 @@ services:
     image: postgres
     env_file:
       - .env
+  pgadmin:
+    image: chorss/docker-pgadmin4
+    ports:
+      - '5050:5050'
+    depends_on:
+      - postgresql
+    links:
+      - postgresql:postgresql
   api:
     build: ./src
     env_file:
