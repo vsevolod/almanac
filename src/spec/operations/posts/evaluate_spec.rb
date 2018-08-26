@@ -30,7 +30,7 @@ RSpec.describe Operations::Posts::Evaluate do
 
     it { is_expected.to be_success }
     it { expect(value.marks_count).to eq(1) }
-    it { expect(value.average_mark).to eq(mark) }
+    it { expect(value.average_mark.round(8)).to eq(mark) }
 
     context 'with marks' do
       let(:marks) { [1, 2, 4, 5] }
@@ -69,7 +69,7 @@ RSpec.describe Operations::Posts::Evaluate do
 
         expect(post.marks.count).to eq(marks.size)
         expect(post.marks_count).to eq(marks.size)
-        expect(post.average_mark).to eq(marks.sum.to_f / marks.size)
+        expect(post.average_mark.round(8)).to eq(marks.sum.to_f / marks.size)
       end
     end
   end

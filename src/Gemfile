@@ -44,4 +44,5 @@ end
 
 group :test do
   gem 'json_matchers'
+  gem 'simplecov', require: false
 end

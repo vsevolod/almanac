@@ -11,4 +11,12 @@ RSpec.describe API::V1::Ping do
       expect(response.body).to eq('"pong"')
     end
   end
+
+  describe '404 error' do
+    it 'returns 404' do
+      get '/api/v1/not_found'
+
+      expect(response).to be_not_found
+    end
+  end
 end

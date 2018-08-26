@@ -27,5 +27,11 @@ RSpec.describe API::V1::Users::ByIP do
       expect(json_response.size).to eq(1)
       expect(json_response.first['ip']).to eq(ip1)
     end
+
+    it 'match json schema' do
+      request.call
+
+      expect(response).to match_json_schema('v1/users/ip_with_users_entity')
+    end
   end
 end

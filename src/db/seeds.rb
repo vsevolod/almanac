@@ -38,21 +38,29 @@ class FakeDatabaseData
 
   def seed_posts(count)
     for_positive(count) do
-      count.times do
-        create_post(
-          user_ip: ips.sample,
-          user_id: users.sample.id,
-          marks_count: SecureRandom.rand(10) + 1,
-          average_mark: SecureRandom.rand * 4 + 1
-        )
-      end
+      count.times { create_custom_post }
     end
   end
 
-  def for_positive(arg, &block)
+  def for_positive(arg)
     return if arg <= 0
 
-    block.call(block)
+    yield
+  end
+
+  def create_custom_post
+    attributes = { user_ip: ips.sample, user_id: users.sample.id }
+
+    if lower_than_one < 0.9
+      attributes[:marks_count] = SecureRandom.rand(10) + 1
+      attributes[:average_mark] = lower_than_one * 4 + 1
+    end
+
+    create_post(attributes)
+  end
+
+  def lower_than_one
+    SecureRandom.rand
   end
 end
 
