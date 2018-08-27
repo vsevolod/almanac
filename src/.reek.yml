@@ -8,6 +8,11 @@ detectors:
     exclude:
       - 'Factory#create_post'
 
+  TooManyStatements:
+    exclude:
+      - 'FakeDatabaseData#seed_marks'
+      - 'FakeDatabaseData#seed_posts'
+
   UncommunicativeModuleName:
     accept:
       - 'V1'
